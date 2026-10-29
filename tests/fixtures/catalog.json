@@ -1,0 +1,304 @@
+{
+ "tools": [
+  {
+   "name": "query_database",
+   "schema_tokens": 240,
+   "entry_tokens": 22,
+   "tier": 5
+  },
+  {
+   "name": "run_report",
+   "schema_tokens": 310,
+   "entry_tokens": 24,
+   "tier": 5
+  },
+  {
+   "name": "send_alert",
+   "schema_tokens": 195,
+   "entry_tokens": 20,
+   "tier": 5
+  },
+  {
+   "name": "upload_artifact",
+   "schema_tokens": 265,
+   "entry_tokens": 21,
+   "tier": 5
+  },
+  {
+   "name": "check_status",
+   "schema_tokens": 180,
+   "entry_tokens": 18,
+   "tier": 5
+  },
+  {
+   "name": "query_cache",
+   "schema_tokens": 160,
+   "entry_tokens": 17,
+   "tier": 10
+  },
+  {
+   "name": "schedule_report",
+   "schema_tokens": 290,
+   "entry_tokens": 23,
+   "tier": 10
+  },
+  {
+   "name": "mute_alert",
+   "schema_tokens": 175,
+   "entry_tokens": 19,
+   "tier": 10
+  },
+  {
+   "name": "download_artifact",
+   "schema_tokens": 250,
+   "entry_tokens": 21,
+   "tier": 10
+  },
+  {
+   "name": "restart_service",
+   "schema_tokens": 230,
+   "entry_tokens": 22,
+   "tier": 10
+  },
+  {
+   "name": "explain_query",
+   "schema_tokens": 275,
+   "entry_tokens": 23,
+   "tier": 20
+  },
+  {
+   "name": "list_tables",
+   "schema_tokens": 205,
+   "entry_tokens": 21,
+   "tier": 20
+  },
+  {
+   "name": "export_rows",
+   "schema_tokens": 320,
+   "entry_tokens": 25,
+   "tier": 20
+  },
+  {
+   "name": "report_history",
+   "schema_tokens": 245,
+   "entry_tokens": 22,
+   "tier": 20
+  },
+  {
+   "name": "alert_history",
+   "schema_tokens": 235,
+   "entry_tokens": 21,
+   "tier": 20
+  },
+  {
+   "name": "page_oncall",
+   "schema_tokens": 215,
+   "entry_tokens": 20,
+   "tier": 20
+  },
+  {
+   "name": "artifact_metadata",
+   "schema_tokens": 260,
+   "entry_tokens": 23,
+   "tier": 20
+  },
+  {
+   "name": "prune_artifacts",
+   "schema_tokens": 270,
+   "entry_tokens": 24,
+   "tier": 20
+  },
+  {
+   "name": "service_logs",
+   "schema_tokens": 225,
+   "entry_tokens": 20,
+   "tier": 20
+  },
+  {
+   "name": "deploy_service",
+   "schema_tokens": 345,
+   "entry_tokens": 26,
+   "tier": 20
+  },
+  {
+   "name": "create_table",
+   "schema_tokens": 330,
+   "entry_tokens": 25,
+   "tier": 50
+  },
+  {
+   "name": "drop_table",
+   "schema_tokens": 190,
+   "entry_tokens": 19,
+   "tier": 50
+  },
+  {
+   "name": "copy_table",
+   "schema_tokens": 255,
+   "entry_tokens": 22,
+   "tier": 50
+  },
+  {
+   "name": "grant_access",
+   "schema_tokens": 240,
+   "entry_tokens": 21,
+   "tier": 50
+  },
+  {
+   "name": "revoke_access",
+   "schema_tokens": 235,
+   "entry_tokens": 21,
+   "tier": 50
+  },
+  {
+   "name": "vacuum_table",
+   "schema_tokens": 200,
+   "entry_tokens": 20,
+   "tier": 50
+  },
+  {
+   "name": "sample_rows",
+   "schema_tokens": 215,
+   "entry_tokens": 20,
+   "tier": 50
+  },
+  {
+   "name": "column_stats",
+   "schema_tokens": 250,
+   "entry_tokens": 22,
+   "tier": 50
+  },
+  {
+   "name": "schedule_job",
+   "schema_tokens": 300,
+   "entry_tokens": 24,
+   "tier": 50
+  },
+  {
+   "name": "cancel_job",
+   "schema_tokens": 185,
+   "entry_tokens": 19,
+   "tier": 50
+  },
+  {
+   "name": "job_history",
+   "schema_tokens": 245,
+   "entry_tokens": 22,
+   "tier": 50
+  },
+  {
+   "name": "retry_job",
+   "schema_tokens": 220,
+   "entry_tokens": 21,
+   "tier": 50
+  },
+  {
+   "name": "create_dashboard",
+   "schema_tokens": 315,
+   "entry_tokens": 25,
+   "tier": 50
+  },
+  {
+   "name": "share_dashboard",
+   "schema_tokens": 210,
+   "entry_tokens": 20,
+   "tier": 50
+  },
+  {
+   "name": "snapshot_dashboard",
+   "schema_tokens": 230,
+   "entry_tokens": 21,
+   "tier": 50
+  },
+  {
+   "name": "create_channel",
+   "schema_tokens": 225,
+   "entry_tokens": 21,
+   "tier": 50
+  },
+  {
+   "name": "channel_members",
+   "schema_tokens": 195,
+   "entry_tokens": 19,
+   "tier": 50
+  },
+  {
+   "name": "test_alert",
+   "schema_tokens": 200,
+   "entry_tokens": 20,
+   "tier": 50
+  },
+  {
+   "name": "escalation_policy",
+   "schema_tokens": 240,
+   "entry_tokens": 22,
+   "tier": 50
+  },
+  {
+   "name": "acknowledge_alert",
+   "schema_tokens": 180,
+   "entry_tokens": 18,
+   "tier": 50
+  },
+  {
+   "name": "resolve_alert",
+   "schema_tokens": 205,
+   "entry_tokens": 20,
+   "tier": 50
+  },
+  {
+   "name": "build_image",
+   "schema_tokens": 340,
+   "entry_tokens": 26,
+   "tier": 50
+  },
+  {
+   "name": "push_image",
+   "schema_tokens": 250,
+   "entry_tokens": 22,
+   "tier": 50
+  },
+  {
+   "name": "scan_image",
+   "schema_tokens": 285,
+   "entry_tokens": 23,
+   "tier": 50
+  },
+  {
+   "name": "rollback_service",
+   "schema_tokens": 265,
+   "entry_tokens": 23,
+   "tier": 50
+  },
+  {
+   "name": "scale_service",
+   "schema_tokens": 230,
+   "entry_tokens": 21,
+   "tier": 50
+  },
+  {
+   "name": "service_metrics",
+   "schema_tokens": 255,
+   "entry_tokens": 22,
+   "tier": 50
+  },
+  {
+   "name": "trace_request",
+   "schema_tokens": 310,
+   "entry_tokens": 25,
+   "tier": 50
+  },
+  {
+   "name": "compare_versions",
+   "schema_tokens": 275,
+   "entry_tokens": 23,
+   "tier": 50
+  },
+  {
+   "name": "freeze_deploys",
+   "schema_tokens": 195,
+   "entry_tokens": 19,
+   "tier": 50
+  }
+ ]
+}

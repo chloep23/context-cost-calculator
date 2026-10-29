@@ -1,0 +1,21 @@
+{
+ "fixed": {
+  "system_tokens": 900,
+  "request_tokens": 400,
+  "load_tool_tokens": 60,
+  "load_call_tokens": 12,
+  "load_result_tokens": 8
+ },
+ "plan": [
+  {
+   "tool": "query_database",
+   "call_tokens": 18,
+   "result_tokens": 140
+  },
+  {
+   "tool": "run_report",
+   "call_tokens": 22,
+   "result_tokens": 210
+  }
+ ]
+}

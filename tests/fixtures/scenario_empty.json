@@ -1,0 +1,10 @@
+{
+ "fixed": {
+  "system_tokens": 900,
+  "request_tokens": 400,
+  "load_tool_tokens": 60,
+  "load_call_tokens": 12,
+  "load_result_tokens": 8
+ },
+ "plan": []
+}

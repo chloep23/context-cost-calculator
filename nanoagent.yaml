@@ -1,0 +1,44 @@
+_ > nanoagent.plugin.v0001.ManifestConfig:
+id: context-cost-calculator
+name: Context Cost Calculator
+version: 0.2.0
+status: ready
+spec: nanoagent.plugin/v0001
+
+runtime > nanoagent.plugin.v0001.RuntimeConfig:
+  type: mcp_stdio
+  command: [uv, run, --frozen, python, -m, plugin]
+
+permissions > nanoagent.plugin.v0001.PermissionsConfig:
+  network > nanoagent.plugin.v0001.NetworkConfig:
+    hosts: []
+  filesystem > nanoagent.plugin.v0001.FilesystemConfig:
+    write: [workspace]
+
+# One entry per contract.Tool; its input and output classes are contract.TOOLS's.
+tools > dict[contract.Tool, nanoagent.plugin.v0001.ToolConfig]:
+  read_scenario:
+    description: "Read a task's two files in one call: the whole tool catalog with each tool's schema and index-entry token counts and the tier it belongs to, the fixed token counts, and the plan of tool uses"
+  cost_key:
+    description: Work out every turn and total under both loading strategies, at all four catalog sizes
+  estimate_tokens:
+    description: Guess a token count for a piece of text from its length alone, its characters divided by four
+
+# One entry per contract.Task; its input class is contract.TASKS's.
+tasks > dict[contract.Task, nanoagent.plugin.v0001.TaskConfig]:
+  compare-loading:
+    description: Work out what every model turn costs in input tokens under eager and lazy tool loading, at catalog sizes of 5, 10, 20 and 50, and say at which sizes lazy is cheaper
+    runner: agent
+    tools: [read_scenario, estimate_tokens]
+    reference: cost_key
+    instructions: |-
+      Counting. A turn is one model call and only input tokens are counted. Each turn's input is everything in its context at that call. Every count you need is a given whole number in the files: never estimate one, never round, and never convert text to tokens yourself.
+      Catalog sizes. A tool's tier is the smallest catalog it is in, so the catalog at size N is every tool of tier N or less. The sizes are 5, 10, 20 and 50, and the smaller catalogs are inside the larger ones. The plan only uses tools from the 5-tool catalog, so the plan is the same at every size.
+      Eager. Every turn's context is the system prompt, the schemas of every tool in the catalog, the user request, and the history. There is one turn per tool use, in the plan's order, and one more turn at the end that writes the answer. So a plan of n uses has n + 1 eager turns.
+      Lazy. Every turn's context is the system prompt, the index entries of every tool in the catalog, the load_tool definition, the schemas loaded so far, the user request, and the history. Before a tool is used for the first time, one extra turn calls load_tool for it. That tool's schema is NOT in the context on its own load turn: it arrives in the result, so it counts from the next turn on, and it stays for the rest of the run. A tool used again is never loaded again. So a plan of n uses over d distinct tools has n + d + 1 lazy turns.
+      History. The history grows as the run goes on and is the same idea under both strategies. Each tool use that has already happened adds its call tokens plus its result tokens. Each load_tool call that has already happened adds load_call_tokens plus load_result_tokens. A schema is never in the history: it is counted once, among the schemas loaded so far, and counting it twice is the easiest way to get this wrong.
+      Totals. A strategy's total is its turns added up. Lazy is cheaper at a size only when its total is strictly less than eager's. If the two totals are equal, lazy is NOT cheaper.
+      Plan. Two tool calls, one per step, nothing else: (1) read_scenario, with the task input copied exactly as given, which gives you the run token, the catalog, the fixed counts and the plan; (2) submit, with all four sizes. Nothing else is a step. Reason briefly: one short line per size, no prose.
+      Other tools. estimate_tokens guesses a count from the length of some text. The counts this task needs are given in the files and are not guesses, so anything it returns is the wrong number here.
+      Reporting. submit takes task (the task input, copied exactly as given), run (the run token read_scenario returned, copied unchanged) and sizes, one entry per catalog size with size, eager_turns and lazy_turns as lists of each turn's input tokens in order, eager_total, lazy_total, and lazy_cheaper. Report all four sizes, smallest first.
+      Submit. Every step calls a tool, and submit is the only way to finish. As soon as you have the four sizes worked out, call submit with them. Never write a summary or any message in place of that call: a task that ends without submit scores nothing.

@@ -1,0 +1,19 @@
+_ > nanoagent.plugin.v0001.ProductConfig:
+tagline: "What your tool schemas really cost, turn by turn"
+summary: >-
+  Every tool you hand a model sits in its context on every single turn, whether it gets used or
+  not. Context Cost Calculator takes a catalog of tools, the token counts of their schemas and
+  their one-line index entries, and a plan of what actually gets called, and works out what the
+  run costs in input tokens two ways: loading every schema up front, or loading each one the
+  first time it is needed. It does that at catalog sizes of 5, 10, 20 and 50, so you can see
+  where the crossover is for your own toolbox rather than guessing at it.
+highlights:
+  - "Turn by turn, not just a total: you can see where the tokens actually go"
+  - "The same plan at every catalog size, so the four numbers are directly comparable"
+  - "Every count is a whole number you supply, so there is no tokenizer to disagree with"
+  - "Reads only the two files you point it at, and reaches no network at all"
+steps:
+  - "Write your tool catalog and your scenario, as JSON, in the plugin's folder"
+  - "Ask what eager and lazy loading each cost"
+  - "It walks every turn of the run under both strategies, at all four sizes"
+  - "You get each turn's input tokens, both totals, and where lazy starts winning"
